@@ -363,32 +363,4 @@ docs(readme): add troubleshooting section
 test(validation): add on-device validator tests
 ```
 
----
 
-## 📜 License
-
-Proprietary - Vizio Inc. All Rights Reserved.
-
----
-
-## 🙏 Acknowledgments
-
-Built on 4 POC projects:
-- `mcp_server_jira_log_analyzer` (log analysis pipeline)
-- `mcp_tv_controller/vizio-mcp` (on-device validation)
-- `mcp-second-screen/jira_auto_fixer` (PR creation, learning system)
-- `tv-mcp-server` (SSH registry access)
-
-Estimated **35-40% effort reduction** from POC code reuse.
-
----
-
-## 📞 Support
-
-- **Internal Slack**: `#safs-support`
-- **Documentation**: See `SAFS_v6_Complete_Master_prompt.md`
-- **Architecture**: See `SAFS_v6_Architecture_Review.md`
-
----
-
-**SAFS v6.0** | Built with ❤️ by Vizio Engineering | February 2026
