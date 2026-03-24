@@ -1,0 +1,42 @@
+{
+  "timestamp": "2024-03-15T14:30:00.000Z",
+  "webhookEvent": "jira:issue_created",
+  "issue": {
+    "id": "10042",
+    "key": "SMART-1234",
+    "fields": {
+      "summary": "LOKi SIGSEGV crash in CompanionServer when launching Netflix",
+      "status": {
+        "name": "Open",
+        "statusCategory": {"key": "new"}
+      },
+      "priority": {"name": "Major"},
+      "assignee": null,
+      "reporter": {"emailAddress": "qa-team@vizio.com"},
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "TV crashes with SIGSEGV null dereference when launching Netflix app. Fault addr 0x0 in CompanionServer::handleRequest(). Happens 3/5 times on M75Q7-H firmware 20231015."
+              }
+            ]
+          }
+        ]
+      },
+      "labels": ["crash", "netflix", "companion-server"],
+      "components": [{"name": "LOKi"}],
+      "issuetype": {"name": "Bug"},
+      "created": "2024-03-15T14:30:00.000+0000",
+      "updated": "2024-03-15T14:30:00.000+0000"
+    }
+  },
+  "user": {
+    "accountId": "5b10a2844c20165700ede21g",
+    "emailAddress": "qa-team@vizio.com"
+  }
+}

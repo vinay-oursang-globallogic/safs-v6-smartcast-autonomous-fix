@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: safs
+  namespace: safs
+  labels:
+    app: safs
+    version: "6.0.0"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: safs
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: safs
+        version: "6.0.0"
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: safs
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+      containers:
+        - name: safs
+          image: ghcr.io/buddytv/safs:6.0.0
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: safs-secrets
+                  key: anthropic-api-key
+            - name: JIRA_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: safs-secrets
+                  key: jira-api-token
+            - name: VOYAGE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: safs-secrets
+                  key: voyage-api-key
+            - name: GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: safs-secrets
+                  key: github-token
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: safs-secrets
+                  key: postgres-password
+          envFrom:
+            - configMapRef:
+                name: safs-config
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2000m"
+              memory: "4Gi"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          volumeMounts:
+            - name: workspace
+              mountPath: /app/workspace
+            - name: logs
+              mountPath: /app/logs
+      volumes:
+        - name: workspace
+          emptyDir: {}
+        - name: logs
+          emptyDir: {}
+      terminationGracePeriodSeconds: 60

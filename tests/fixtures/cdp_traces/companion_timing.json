@@ -1,0 +1,60 @@
+{
+  "traceEvents": [
+    {
+      "name": "EventDispatch",
+      "ph": "X",
+      "ts": 1000000,
+      "dur": 5000,
+      "pid": 1234,
+      "tid": 5678,
+      "args": {"type": "VIZIO_LIBRARY_DID_LOAD"}
+    },
+    {
+      "name": "FunctionCall",
+      "ph": "X",
+      "ts": 1006000,
+      "dur": 150000,
+      "pid": 1234,
+      "tid": 5678,
+      "args": {
+        "data": {
+          "functionName": "window.VIZIO.getVersion",
+          "url": "https://www.netflix.com/title/80018499"
+        }
+      }
+    },
+    {
+      "name": "TimerInstall",
+      "ph": "X",
+      "ts": 999000,
+      "dur": 100,
+      "pid": 1234,
+      "tid": 5678,
+      "args": {
+        "data": {
+          "type": "setTimeout",
+          "timeout": 5000,
+          "singleShot": true
+        }
+      }
+    },
+    {
+      "name": "ConsoleMessage",
+      "ph": "i",
+      "ts": 1010000,
+      "pid": 1234,
+      "tid": 5678,
+      "args": {
+        "message": "waiting VIZIO_LIBRARY_DID_LOAD: companion lib not ready",
+        "level": "warning",
+        "url": "https://www.netflix.com/nrdp/",
+        "lineNumber": 42
+      }
+    }
+  ],
+  "metadata": {
+    "scenario": "companion_timing_race",
+    "app": "netflix",
+    "description": "CDP trace showing VIZIO_LIBRARY_DID_LOAD race condition"
+  }
+}

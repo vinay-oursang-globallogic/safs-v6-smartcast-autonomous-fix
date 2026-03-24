@@ -1,0 +1,53 @@
+{
+  "traceEvents": [
+    {
+      "name": "ConsoleMessage",
+      "ph": "i",
+      "ts": 5000000,
+      "pid": 2000,
+      "tid": 6000,
+      "args": {
+        "message": "Shaka error 3016: MEDIA_SOURCE_MUTUALLY_EXCLUSIVE - MSE seek conflict",
+        "level": "error",
+        "url": "https://www.hulu.com/player",
+        "lineNumber": 315
+      }
+    },
+    {
+      "name": "EventDispatch",
+      "ph": "X",
+      "ts": 4990000,
+      "dur": 15000,
+      "pid": 2000,
+      "tid": 6000,
+      "args": {"type": "seeking"}
+    },
+    {
+      "name": "EventDispatch",
+      "ph": "X",
+      "ts": 4995000,
+      "dur": 8000,
+      "pid": 2000,
+      "tid": 6000,
+      "args": {"type": "seeked"}
+    },
+    {
+      "name": "ConsoleMessage",
+      "ph": "i",
+      "ts": 5001000,
+      "pid": 2000,
+      "tid": 6000,
+      "args": {
+        "message": "shaka media source error: appendBuffer failed during seek",
+        "level": "error",
+        "url": "https://www.hulu.com/player",
+        "lineNumber": 422
+      }
+    }
+  ],
+  "metadata": {
+    "scenario": "shaka_3016_mse_seek",
+    "app": "hulu",
+    "description": "CDP trace showing Shaka 3016 MEDIA_SOURCE_MUTUALLY_EXCLUSIVE error during seek"
+  }
+}

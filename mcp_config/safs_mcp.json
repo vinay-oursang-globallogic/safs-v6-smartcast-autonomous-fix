@@ -1,0 +1,51 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "vizio-remote": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp"
+      ],
+      "cwd": "${VIZIO_REMOTE_MCP_PATH}",
+      "env": {
+        "VIZIO_TV_IP": "${VIZIO_TV_IP}",
+        "VIZIO_SCPL_AUTH_TOKEN": "${VIZIO_SCPL_AUTH_TOKEN}"
+      }
+    },
+    "vizio-ssh": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp"
+      ],
+      "cwd": "${VIZIO_SSH_MCP_PATH}",
+      "env": {
+        "VIZIO_TV_IP": "${VIZIO_TV_IP}",
+        "VIZIO_TV_SSH_USER": "${VIZIO_TV_SSH_USER}",
+        "VIZIO_TV_SSH_PASSWORD": "${VIZIO_TV_SSH_PASSWORD}"
+      }
+    },
+    "vizio-loki": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp"
+      ],
+      "cwd": "${VIZIO_LOKI_MCP_PATH}",
+      "env": {
+        "VIZIO_TV_IP": "${VIZIO_TV_IP}",
+        "VIZIO_LOKI_TCP_PORT": "${VIZIO_LOKI_TCP_PORT}"
+      }
+    }
+  }
+}

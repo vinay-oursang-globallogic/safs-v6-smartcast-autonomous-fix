@@ -1,0 +1,19 @@
+{
+  "version": 3,
+  "file": "bundle.min.js",
+  "sourceRoot": "",
+  "sources": [
+    "src/companion/init.ts",
+    "src/player/vizio-player.ts",
+    "src/utils/event-manager.ts"
+  ],
+  "sourcesContent": null,
+  "names": [
+    "initCompanion",
+    "waitForLibrary",
+    "onLibraryLoaded",
+    "dispatchEvent",
+    "addEventListener"
+  ],
+  "mappings": "AAAA,SAASA,cAAcC,YAClBC,KAAKC,cACHD,KAAKE,mBAAoB"
+}

@@ -1,0 +1,130 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+!*.key.example
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Logs
+*.log
+logs/
+mcp_server_logs/
+analysis_results/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ruff
+.ruff_cache/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+.~*
+workdir/
+
+# Build artifacts
+*.o
+*.a
+*.so.debug
+*.elf
+
+# Kubernetes secrets
+infra/kubernetes/secrets/
+
+# MinIO/S3 local storage
+.minio.sys/
+
+# Playwright
+playwright-report/
+test-results/
+
+# LangFuse
+.langfuse/
+
+# Docker
+docker-compose.override.yml
+
+# ── Session / investigation artefacts ──────────────────────────────────────
+# Phase completion markers written during development sessions
+PHASE*.md
+FIXES_VERIFICATION_REPORT.md
+
+# Dry-run / scratch scripts
+dry_run_*.py
+diagnose_*.py
+verify_*.py
+
+# Investigation & architecture-review docs (one-off session outputs)
+SAFS_V6_360_INVESTIGATION_REPORT*.md
+SAFS_v6_Architecture_Review.md
+SAFS_v6_Complete_Master_Prompt.md
+
+# workdir — real device logs, extracted zips, RCA outputs (potentially large / sensitive)
+workdir/
+
+# Coverage HTML report (regenerated on every test run)
+htmlcov/
+
+# Egg-info (build artefact)
+src/*.egg-info/

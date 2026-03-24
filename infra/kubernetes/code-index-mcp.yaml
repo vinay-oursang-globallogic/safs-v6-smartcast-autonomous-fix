@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: code-index-mcp
+  namespace: safs
+  labels:
+    app: code-index-mcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: code-index-mcp
+  template:
+    metadata:
+      labels:
+        app: code-index-mcp
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+      containers:
+        - name: code-index-mcp
+          image: ghcr.io/buddytv/code-index-mcp:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "2Gi"
+            limits:
+              cpu: "2000m"
+              memory: "8Gi"
+          env:
+            - name: GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: safs-secrets
+                  key: github-token
+            - name: INDEX_ROOT
+              value: /data/index
+          volumeMounts:
+            - name: code-index
+              mountPath: /data/index
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8081
+            initialDelaySeconds: 15
+            periodSeconds: 10
+      volumes:
+        - name: code-index
+          persistentVolumeClaim:
+            claimName: code-index-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: code-index-mcp
+  namespace: safs
+spec:
+  selector:
+    app: code-index-mcp
+  ports:
+    - name: http
+      port: 8081
+      targetPort: 8081
